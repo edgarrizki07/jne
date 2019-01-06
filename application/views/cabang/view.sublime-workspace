@@ -1,0 +1,843 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"nama",
+				"nama"
+			],
+			[
+				"ke",
+				"kelompok_akun_id"
+			],
+			[
+				"list",
+				"list_model"
+			],
+			[
+				"in",
+				"info"
+			],
+			[
+				"data",
+				"data"
+			],
+			[
+				"pe",
+				"pemasaran"
+			],
+			[
+				"pbb",
+				"ppbkb"
+			],
+			[
+				"ema",
+				"email1"
+			],
+			[
+				"emia",
+				"email2"
+			],
+			[
+				"emai",
+				"email"
+			],
+			[
+				"Ke",
+				"kepala"
+			],
+			[
+				"em",
+				"email"
+			],
+			[
+				"email",
+				"email2"
+			],
+			[
+				"alama",
+				"alamat"
+			],
+			[
+				"pem",
+				"pembelian"
+			],
+			[
+				"ko",
+				"kode"
+			],
+			[
+				"input",
+				"input"
+			],
+			[
+				"alam",
+				"alamat"
+			],
+			[
+				"tlp",
+				"telp"
+			],
+			[
+				"ala",
+				"alamat"
+			],
+			[
+				"np",
+				"npwp"
+			],
+			[
+				"stat",
+				"status"
+			],
+			[
+				"eror",
+				"error_string"
+			],
+			[
+				"npwp",
+				"npwp_pemilik"
+			],
+			[
+				"npw",
+				"npwp_pemilik"
+			],
+			[
+				"opra",
+				"oprasional"
+			],
+			[
+				"ti",
+				"this"
+			],
+			[
+				"kode",
+				"kode_akun"
+			],
+			[
+				"n",
+				"name"
+			],
+			[
+				"E",
+				"Email"
+			],
+			[
+				"naa",
+				"nama"
+			],
+			[
+				"Pro",
+				"provinsi"
+			],
+			[
+				"p",
+				"placeholder\tAttr"
+			],
+			[
+				"PRO",
+				"Provinsi"
+			],
+			[
+				"Na",
+				"Nama"
+			],
+			[
+				"alamat",
+				"almamat"
+			],
+			[
+				"na",
+				"Name"
+			],
+			[
+				"pr",
+				"provinsi"
+			],
+			[
+				"inpu",
+				"input"
+			],
+			[
+				"sta",
+				"status"
+			],
+			[
+				"nam",
+				"nama"
+			],
+			[
+				"pos",
+				"post"
+			],
+			[
+				"th",
+				"this"
+			],
+			[
+				"cu",
+				"customer"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"EX",
+				"exit"
+			],
+			[
+				"define",
+				"defined"
+			],
+			[
+				"load",
+				"com_load"
+			],
+			[
+				"htm",
+				"html\thtml"
+			],
+			[
+				"eho",
+				"echo\techo \"…\""
+			],
+			[
+				"EHO",
+				"echo"
+			],
+			[
+				"control",
+				"CI_Controller"
+			],
+			[
+				"fu",
+				"function"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/xampp/htdocs/jnenergi/application/controllers/moduls/Cabang.php",
+			"settings":
+			{
+				"buffer_size": 8353,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/jnenergi/application/controllers/moduls/Akun.php",
+			"settings":
+			{
+				"buffer_size": 4016,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/jnenergi/application/views/moduls/person.php",
+			"settings":
+			{
+				"buffer_size": 9391,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/jnenergi/application/views/moduls/m_cabang.php",
+			"settings":
+			{
+				"buffer_size": 9025,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Edgar/Downloads/Akun.php",
+			"settings":
+			{
+				"buffer_size": 4016,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/jne/application/controllers/akun.php",
+			"settings":
+			{
+				"buffer_size": 8456,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Edgar/Downloads/List_model.php",
+			"settings":
+			{
+				"buffer_size": 1051,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<?php\ndefined('BASEPATH') OR exit('No direct script access allowed');\nclass Cabang extends CI_Controller {\n\n\tpublic function __construct() {\n\t\tparent::__construct();\n\t\tdate_default_timezone_set(\"Asia/Jakarta\");\n\t}\n\n\tpublic function data_list() {\n\t\t$table = 'cabang'; \n\t\t$column = array('provinsi','kota','telp','email','kepala');\n\t\t\t\t\n\t\t$this->list_model->get_datatables_query($table,$column); if($_POST['length'] != -1)\n\t\t$this->db->limit($_POST['length'], $_POST['start']);\n\t\t$this->db->where('deleted','0');\n\t\t$list = $this->db->get()->result();\n\t\t$data = array();\n\t\t$no = $_POST['start'];\n\t\tforeach ($list as $info) {\n\t\t\t$no++;\n\t\t\t$row = array();\n\t\t\t$row[] = $no;\n\t\t\t$row[] = $info->provinsi;\n\t\t\t$row[] = $info->kota;\n\t\t\t$row[] = $info->telp;\n\t\t\t$row[] = $info->email;\n\t\t\t$row[] = $info->kepala;\n\n\t\t\t$row[] = '\n                <div class=\"btn-group\">\n                  <button type=\"button\" class=\"btn btn-info\" href=\"javascript:void()\" title=\"Edit\" onclick=\"edit_data('.\"'\".$table.\"/\".$info->id.\"'\".')\">View</button>\n                  <button type=\"button\" class=\"btn btn-info dropdown-toggle\" data-toggle=\"dropdown\">\n                    <span class=\"caret\"></span>\n                    <span class=\"sr-only\">Toggle Dropdown</span>\n                  </button>\n                  <ul class=\"dropdown-menu\" role=\"menu\">\n\t\t\t\t\t<li><a href=\"javascript:void()\" title=\"Edit\" onclick=\"edit_data('.\"'\".$table.\"/\".$info->id.\"'\".')\"><i class=\"glyphicon glyphicon-pencil\"></i> Edit</a></li>\n                    <li class=\"divider\"></li>\n                    <li><a href=\"javascript:void()\" title=\"Hapus\" onclick=\"delete_data('.\"'\".$table.\"/\".$info->id.\"'\".')\"><i class=\"glyphicon glyphicon-trash\"></i> Delete</a></li>\n                  </ul>\n                </div>\t\t\t\n\t\t\t';\n\t\t\n\t\t\t$data[] = $row;\n\t\t}\n\t\t\n\t\t$this->db->from($table); $this->db->where('deleted','0');\n\t\t$count_all = $this->db->count_all_results();\n\t\t$this->list_model->get_datatables_query($table,$column); $this->db->where('deleted','0'); $count_query = $this->db->get(); \n\t\t$count_filtered = $count_query->num_rows();\n\t\t$output = array( \"draw\" => $_POST['draw'], \"recordsTotal\" => $count_all, \"recordsFiltered\" => $count_filtered, \"data\" => $data, );\n\t\techo json_encode($output);\n\t}\n\n\tpublic function save($method) {\n\t\t$this->_validate();\n\t\t$table = 'cabang'; \n\t\t$id = $this->input->post('id');\n\t\t$created = array(\n\t\t\t\t'nama'=> $this->input->post('nama'),\n\t\t\t\t'alamat'=> $this->input->post('alamat'),\n\t\t\t\t'kelurahan'=>$this->input->post('kelurahan'),\n\t\t\t\t'kecamatan'=>$this->input->post('kecamatan'),\n\t\t\t\t'kota'=> $this->input->post('kota'),\n\t\t\t\t'provinsi' => $this->input->post('provinsi'),\n\t\t\t\t'email' => $this->input->post('email'),\n\t\t\t\t''\n\t\t\t\t'kecamatan' => $this ->input->post('kecamatan'),\n\t\t\t\t'kota'=> $this ->input->post('kota'),\n\t\t\t\t'provinsi' => $this->input->post('provinsi'),\n\t\t\t\t'telp' => $this->input->post('telp'),\n\t\t\t\t'fax' => $this->input->post('fax'),\n\t\t\t\t'email' => $this->input->post('emsail'),\n\t\t\t\t'email1' => $this->input->post('email1'),\n\t\t\t\t'email2' => $this->input->post('email2'),\n\t\t\t\t'bank' => $this->input->post('bank'),\n\t\t\t\t'namarek' => $this->input->post('namarek'),\n\t\t\t\t'email1' => $this->input->post('email1'),\n\t\t\t\t'rekening' => $this->input->post('rekening'),\n\t\t\t\t'warna' => $this->input->post('warna'),\n\t\t\t\t'pemilik' => $this->input->post('pemilik'),\n\t\t\t\t'npwp_pemilik' => $this->input->post('npwp_pemilik'),\n\t\t\t\t'kepala' => $this->input->post('kepala'),\n\t\t\t\t'keuangan' => $this->input->post->('keuangan'),\n\t\t\t\t'pembelian' => $this->input->post->('pembelian'),\n\t\t\t\t'penjualan' => $this->input->post->('penjualan'),\n\t\t\t\t'oprasional' => $this->input->post->('oprasioanal'),\n\t\t\t\t'pemasaran' => $this->input->post->('pemasaran'),\n\t\t\t\t'keterangan' => $this->input->post->('keterangan'),\n\t\t\t\t'accso' => $this->input->post->('accso'),\n\t\t\t\t'accsos' => $this->input->post->('accsos'),\n\t\t\t\t'accpo' => $this->input->post->('accpo'),\n\t\t\t\t'accdo' => $this->input->post->('accdo'),\n\t\t\t\t'accinv' => $this->input->post->('accinv'),\n\t\t\t\t'accpay' => $this->input->post->('accpay'),\n\t\t\t\t'emailso' => $this->input->post->('emailso'),\n\t\t\t\t'emailpo' => $this->input->post->('emailpo'),\n\t\t\t\t'emaildo' => $this->input->post->('emaildo'),\n\t\t\t\t'emailinv' => $this->input->post->('emailinv'),\n\t\t\t\t'emailpay' => $this->input->post->('emailpay'),\n\t\t\t\t'created_by' => '1',\n\t\t\t\t'created_at' => date(\"Y-m-d H:i:s\"),\n\t\t\t);\n\t\t$updated = array(\n\t\t\t\t'status'=> $this->input->post('status'),\n\t\t\t\t'nama'=> $this->input->post('nama'),\n\t\t\t\t'kode'=> $this->input->post('kode'),\n\t\t\t\t'kode_akun'=>$this->input->post('kode_akun'),\n\t\t\t\t'npwp'=>$this->input->post('npwp'),\n\t\t\t\t'pbbkb'=> $this->input->post('pbbkb'),\n\t\t\t\t'alamat' => $this->input->post('alamat'),\n\t\t\t\t'alamat1' => $this->input->post('alamat1'),\n\t\t\t\t'kelurahan' => $this->input->post('kelurahan'),\n\t\t\t\t'kecamatan' => $this ->input->post('kecamatan'),\n\t\t\t\t'kota'=> $this ->input->post('kota'),\n\t\t\t\t'provinsi' => $this->input->post('provinsi'),\n\t\t\t\t'telp' => $this->input->post('telp'),\n\t\t\t\t'fax' => $this->input->post('fax'),\n\t\t\t\t'email' => $this->input->post('emsail'),\n\t\t\t\t'email1' => $this->input->post('email1'),\n\t\t\t\t'email2' => $this->input->post('email2'),\n\t\t\t\t'bank' => $this->input->post('bank'),\n\t\t\t\t'namarek' => $this->input->post('namarek'),\n\t\t\t\t'email1' => $this->input->post('email1'),\n\t\t\t\t'rekening' => $this->input->post('rekening'),\n\t\t\t\t'warna' => $this->input->post('warna'),\n\t\t\t\t'pemilik' => $this->input->post('pemilik'),\n\t\t\t\t'npwp_pemilik' => $this->input->post('npwp_pemilik'),\n\t\t\t\t'kepala' => $this->input->post('kepala'),\n\t\t\t\t'keuangan' => $this->input->post->('keuangan'),\n\t\t\t\t'pembelian' => $this->input->post->('pembelian'),\n\t\t\t\t'penjualan' => $this->input->post->('penjualan'),\n\t\t\t\t'oprasional' => $this->input->post->('oprasioanal'),\n\t\t\t\t'pemasaran' => $this->input->post->('pemasaran'),\n\t\t\t\t'keterangan' => $this->input->post->('keterangan'),\n\t\t\t\t'accso' => $this->input->post->('accso'),\n\t\t\t\t'accsos' => $this->input->post->('accsos'),\n\t\t\t\t'accpo' => $this->input->post->('accpo'),\n\t\t\t\t'accdo' => $this->input->post->('accdo'),\n\t\t\t\t'accinv' => $this->input->post->('accinv'),\n\t\t\t\t'accpay' => $this->input->post->('accpay'),\n\t\t\t\t'emailso' => $this->input->post->('emailso'),\n\t\t\t\t'emailpo' => $this->input->post->('emailpo'),\n\t\t\t\t'emaildo' => $this->input->post->('emaildo'),\n\t\t\t\t'emailinv' => $this->input->post->('emailinv'),\n\t\t\t\t'emailpay' => $this->input->post->('emailpay'),\n\t\t\t\t'created_by' => '1',\n\t\t\t\t'created_at' => date(\"Y-m-d H:i:s\"),\n\t\t\t);\n\t\tif($method == 'add') {\n\t\t\t$insert = $this->db->insert($table, $created); $this->db->insert_id();\n\t\t} else {\n\t\t\t$this->db->update($table, $updated, array('id' => $id)); $this->db->affected_rows();\n\t\t}\n\t\techo json_encode(array(\"status\" => TRUE));\n\t}\n\n\tprivate function _validate() {\n\t\t$data = array();\n\t\t$data['error_string'] = array();\n\t\t$data['inputerror'] = array();\n\t\t$data['status'] = TRUE;\n\n\t\tif($this->input->post('status') == '') {\n\t\t\t$data['inputerror'][] = 'status';\n\t\t\t$data['error_string'][] = 'status name is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('nama') == '') {\n\t\t\t$data['inputerror'][] = 'nama';\n\t\t\t$data['error_string'][] = 'nama is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('kode') == '') {\n\t\t\t$data['inputerror'][] = 'kode';\n\t\t\t$data['error_string'][] = 'kode is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('kode_akun') == '') {\n\t\t\t$data['inputerror'][] = 'kode_akun';\n\t\t\t$data['error_string'][] = 'kode_akun is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('npwp') == '') {\n\t\t\t$data['inputerror'][] = 'npwp';\n\t\t\t$data['error_string'][] = 'npwp is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('pbbkb') == '') {\n\t\t\t$data['inputerror'][] = 'pbbkb';\n\t\t\t$data['error_string'][] = 'pbbkb is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('alamat') == '') {\n\t\t\t$data['inputerror'][] = 'alamat';\n\t\t\t$data['error_string'][] = 'alamat is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('alamat1') == '') {\n\t\t\t$data['inputerror'][] = 'penjualan';\n\t\t\t$data['error_string'][] = 'penjualan is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('oprasional') == '') {\n\t\t\t$data['inputerror'][] = 'oprasional';\n\t\t\t$data['error_string'][] = 'oprasional is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('kelurahan') == '') {\n\t\t\t$data['inputerror'][] = 'kelurahan';\n\t\t\t$data['error_string'][] = 'kelurahan is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif($this->input->post('kecamatan') == '') {\n\t\t\t$data['inputerror'][] = 'kecamatan';\n\t\t\t$data['error_string'][] = 'kecamatan is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif($this->input->post('kota') == '') {\n\t\t\t$data['inputerror'][] = 'kota';\n\t\t\t$data['error_string'][] = 'kota is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif($this->input->post('oprasional') == '') {\n\t\t\t$data['inputerror'][] = 'oprasional';\n\t\t\t$data['error_string'][] = 'oprasional is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif($this->input->post('provinsi') == '') {\n\t\t\t$data['inputerror'][] = 'provinsi';\n\t\t\t$data['error_string'][] = 'provinsi is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif($this->input->post('telp') == '') {\n\t\t\t$data['inputerror'][] = 'telp';\n\t\t\t$data['error_string'][] = 'telp is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif($this->input->post('fax') == '') {\n\t\t\t$data['inputerror'][] = 'fax';\n\t\t\t$data['error_string'][] = 'fax is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif($this->input->post('email') == '') {\n\t\t\t$data['inputerror'][] = 'email';\n\t\t\t$data['error_string'][] = 'email is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif($this->input->post('email1') == '') {\n\t\t\t$data['inputerror'][] = 'email1';\n\t\t\t$data['error_string'][] = 'email1 is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif ($this->input->post('email2')=='') {\n\t\t\t$data['inputerror'][] = 'email2';\n\t\t\t$data['error_string'] =' email2';\n\t\t\t$data['inputerror'[]] = 'email2 is required'\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif($this->input->post('bank') == '') {\n\t\t\t$data['inputerror'][] = 'bank';\n\t\t\t$data['error_string'][] = 'bank is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif($this->input->post('namarek') == '') {\n\t\t\t$data['inputerror'][] = 'namarek';\n\t\t\t$data['error_string'][] = 'namarek is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\t\tif($this->input->post('bank') == '') {\n\t\t\t$data['inputerror'][] = 'bank';\n\t\t\t$data['error_string'][] = 'bank is required';\n\t\t\t$data['status'] = FALSE\n\t\t}\n\t\tif($this->input->post('bank') == '') {\n\t\t\t$data['inputerror'][] = 'bank';\n\t\t\t$data['error_string'][] = 'bank is required';\n\t\t\t$data['status'] = FALSE\n\t\t}\n\t\tif($data['status'] === FALSE) {\n\t\t\techo json_encode($data);\n\t\t\texit();\n\t\t}\n\t}\n\n}\n",
+			"settings":
+			{
+				"buffer_size": 10763,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<?php\ndefined('BASEPATH') OR exit('No direct script access allowed');\nclass Person extends CI_Controller {\n\n\tpublic function __construct() {\n\t\tparent::__construct();\n\t\tdate_default_timezone_set(\"Asia/Jakarta\");\n\t}\n\n\tpublic function data_list() {\n\t\t$table = 'persons'; \n\t\t$column = array('firstname','lastname','gender','address','dob');\n\t\t\t\t\n\t\t$this->list_model->get_datatables_query($table,$column); if($_POST['length'] != -1)\n\t\t$this->db->limit($_POST['length'], $_POST['start']);\n\t\t$this->db->where('deleted','0');\n\t\t$list = $this->db->get()->result();\n\t\t$data = array();\n\t\t$no = $_POST['start'];\n\t\tforeach ($list as $info) {\n\t\t\t$no++;\n\t\t\t$row = array();\n\t\t\t$row[] = $no;\n\t\t\t$row[] = $info->firstName;\n\t\t\t$row[] = $info->lastName;\n\t\t\t$row[] = $info->gender;\n\t\t\t$row[] = $info->address;\n\t\t\t$row[] = $info->dob;\n\n\t\t\t$row[] = '\n                <div class=\"btn-group\">\n                  <button type=\"button\" class=\"btn btn-info\" href=\"javascript:void()\" title=\"Edit\" onclick=\"edit_data('.\"'\".$table.\"/\".$info->id.\"'\".')\">View</button>\n                  <button type=\"button\" class=\"btn btn-info dropdown-toggle\" data-toggle=\"dropdown\">\n                    <span class=\"caret\"></span>\n                    <span class=\"sr-only\">Toggle Dropdown</span>\n                  </button>\n                  <ul class=\"dropdown-menu\" role=\"menu\">\n\t\t\t\t\t<li><a href=\"javascript:void()\" title=\"Edit\" onclick=\"edit_data('.\"'\".$table.\"/\".$info->id.\"'\".')\"><i class=\"glyphicon glyphicon-pencil\"></i> Edit</a></li>\n                    <li class=\"divider\"></li>\n                    <li><a href=\"javascript:void()\" title=\"Hapus\" onclick=\"delete_data('.\"'\".$table.\"/\".$info->id.\"'\".')\"><i class=\"glyphicon glyphicon-trash\"></i> Delete</a></li>\n                  </ul>\n                </div>\t\t\t\n\t\t\t';\n\t\t\n\t\t\t$data[] = $row;\n\t\t}\n\t\t\n\t\t$this->db->from($table); $this->db->where('deleted','0');\n\t\t$count_all = $this->db->count_all_results();\n\t\t$this->list_model->get_datatables_query($table,$column); $this->db->where('deleted','0'); $count_query = $this->db->get(); \n\t\t$count_filtered = $count_query->num_rows();\n\t\t$output = array( \"draw\" => $_POST['draw'], \"recordsTotal\" => $count_all, \"recordsFiltered\" => $count_filtered, \"data\" => $data, );\n\t\techo json_encode($output);\n\t}\n\n\tpublic function save($method) {\n\t\t$this->_validate();\n\t\t$table = 'persons'; \n\t\t$id = $this->input->post('id');\n\t\t$created = array(\n\t\t\t\t'firstName' => $this->input->post('firstName'),\n\t\t\t\t'lastName' => $this->input->post('lastName'),\n\t\t\t\t'gender' => $this->input->post('gender'),\n\t\t\t\t'address' => $this->input->post('address'),\n\t\t\t\t'dob' => $this->input->post('dob'),\n\t\t\t\t'created_by' => '1',\n\t\t\t\t'created_at' => date(\"Y-m-d H:i:s\"),\n\t\t\t);\n\t\t$updated = array(\n\t\t\t\t'firstName' => $this->input->post('firstName'),\n\t\t\t\t'lastName' => $this->input->post('lastName'),\n\t\t\t\t'gender' => $this->input->post('gender'),\n\t\t\t\t'address' => $this->input->post('address'),\n\t\t\t\t'dob' => $this->input->post('dob'),\n\t\t\t\t'updated_by' => '1',\n\t\t\t\t'updated_at' => date(\"Y-m-d H:i:s\"),\n\t\t\t);\n\t\tif($method == 'add') {\n\t\t\t$insert = $this->db->insert($table, $created); $this->db->insert_id();\n\t\t} else {\n\t\t\t$this->db->update($table, $updated, array('id' => $id)); $this->db->affected_rows();\n\t\t}\n\t\techo json_encode(array(\"status\" => TRUE));\n\t}\n\n\tprivate function _validate() {\n\t\t$data = array();\n\t\t$data['error_string'] = array();\n\t\t$data['inputerror'] = array();\n\t\t$data['status'] = TRUE;\n\n\t\tif($this->input->post('firstName') == '') {\n\t\t\t$data['inputerror'][] = 'firstName';\n\t\t\t$data['error_string'][] = 'First name is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('lastName') == '') {\n\t\t\t$data['inputerror'][] = 'lastName';\n\t\t\t$data['error_string'][] = 'Last name is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('dob') == '') {\n\t\t\t$data['inputerror'][] = 'dob';\n\t\t\t$data['error_string'][] = 'Date of Birth is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('gender') == '') {\n\t\t\t$data['inputerror'][] = 'gender';\n\t\t\t$data['error_string'][] = 'Please select gender';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($this->input->post('address') == '') {\n\t\t\t$data['inputerror'][] = 'address';\n\t\t\t$data['error_string'][] = 'Addess is required';\n\t\t\t$data['status'] = FALSE;\n\t\t}\n\n\t\tif($data['status'] === FALSE) {\n\t\t\techo json_encode($data);\n\t\t\texit();\n\t\t}\n\t}\n\n}\n",
+			"file": "/C/xampp/htdocs/jnenergi/application/controllers/moduls/Person.php",
+			"file_size": 4210,
+			"file_write_time": 131374419773128161,
+			"settings":
+			{
+				"buffer_size": 4341,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/jne/application/controllers/cabang.php",
+			"settings":
+			{
+				"buffer_size": 9765,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Install Package Control"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/xampp/htdocs/jne/application/models/customer_model.php",
+		"/C/xampp/htdocs/jnenergi/application/controllers/moduls/Akun.php",
+		"/C/xampp/htdocs/crud/application/controllers/Person.php",
+		"/C/xampp/htdocs/jnenergi/application/views/moduls/m_setting.php",
+		"/C/Users/Edgar/Downloads/autoload.php",
+		"/C/xampp/htdocs/jnenergi/application/controllers/akun.php",
+		"/C/Users/Edgar/Downloads/admin_view.php",
+		"/C/xampp/htdocs/jne/application/config/autoload.php",
+		"/C/xampp/htdocs/jnenergi/application/views/m_cabang.php",
+		"/C/xampp/htdocs/jnenergi/application/controllers/moduls/Cabang.php",
+		"/C/Users/Edgar/Downloads/Cabang1.php",
+		"/C/Users/Edgar/Downloads/m_cabang (1).php",
+		"/C/Users/Edgar/Downloads/List_model.php",
+		"/C/Users/Edgar/Downloads/Admin (1).php",
+		"/C/xampp/htdocs/jne/application/controllers/akun.php",
+		"/C/xampp/htdocs/jne/application/controllers/customer.php",
+		"/C/xampp/htdocs/jnenergi/application/models/Person_model.php",
+		"/C/xampp/htdocs/jnenergi/application/models/List_model.php",
+		"/D/jnenergi/application/controllers/moduls/Cabang.php",
+		"/C/xampp/htdocs/jne/application/views/cabang/view.php",
+		"/C/xampp/htdocs/jne/application/views/cabang/edit.php",
+		"/C/xampp/htdocs/crud/application/controllers/Welcome.php",
+		"/C/xampp/htdocs/crud/application/views/person_view.php",
+		"/C/xampp/htdocs/crud/application/models/Person_model.php",
+		"/C/xampp/htdocs/jnenergi/application/controllers/Login.php",
+		"/C/xampp/htdocs/jnenergi/application/controllers/Admin.php",
+		"/C/xampp/htdocs/crud/system/database/index.html",
+		"/C/xampp/htdocs/crud/application/views/welcome_message.php",
+		"/C/xampp/htdocs/crud/system/helpers/file_helper.php",
+		"/C/xampp/htdocs/jne/application/views/customer/popup.php",
+		"/C/xampp/htdocs/jne/application/views/customer/display.php",
+		"/C/xampp/htdocs/jne/application/views/layout/header.php",
+		"/C/xampp/htdocs/jne/application/views/customer/form.php",
+		"/C/xampp/htdocs/crud/application/config/config.php",
+		"/C/xampp/htdocs/crud/application/config/autoload.php",
+		"/C/xampp/htdocs/jne/asset/css/plugins/timeline/timeline.css",
+		"/C/xampp/htdocs/jne/asset/css/plugins/social-buttons/social-buttons.css",
+		"/C/xampp/htdocs/edgarblog/application/views/welcome_message.php",
+		"/C/xampp/htdocs/edgarblog/application/config/autoload.php",
+		"/C/xampp/htdocs/edgarblog/application/config/config.php",
+		"/C/xampp/htdocs/edgarblog/application/config/routes.php",
+		"/C/xampp/htdocs/edgarblog/application/controllers/Welcome.php",
+		"/C/xampp/htdocs/jne/application/views/layout/template.php",
+		"/C/xampp/htdocs/crud/application/config/routes.php",
+		"/C/xampp/htdocs/jne/application/controllers/home.php",
+		"/C/xampp/htdocs/jne/application/controllers/user.php",
+		"/C/xampp/htdocs/jne/application/views/user/form.php",
+		"/C/xampp/htdocs/jne/application/views/user/display.php",
+		"/C/xampp/htdocs/jne/application/config/config.php",
+		"/C/xampp/htdocs/jne/application/controllers/cabang.php",
+		"/C/xampp/htdocs/jne/application/views/akun/display.php",
+		"/C/xampp/htdocs/jne/application/views/cabang/tambah.php",
+		"/C/xampp/htdocs/jne/application/views/cabang/index.php",
+		"/C/xampp/htdocs/jne/application/views/setting/header.php",
+		"/C/xampp/htdocs/jne/application/views/setting/logo.php",
+		"/C/xampp/htdocs/jne/application/views/akun/form.php",
+		"/C/xampp/htdocs/jne/application/views/transportir/index.php",
+		"/C/xampp/htdocs/jne/application/views/cabang/view.sublime-workspace",
+		"/C/xampp/htdocs/jne/application/controllers/a_his.php",
+		"/C/xampp/htdocs/jne/application/helpers/MY_email_helper.php",
+		"/C/xampp/htdocs/jne/application/helpers/indodate_helper.php",
+		"/C/xampp/htdocs/jne/application/views/user/view.php",
+		"/C/xampp/htdocs/jne/application/helpers/finance_helper.php",
+		"/C/xampp/htdocs/jne/application/helpers/encrypt_helper.php",
+		"/C/xampp/htdocs/jne/application/helpers/name_helper.php",
+		"/C/xampp/phpMyAdmin/config.inc.php",
+		"/C/xampp/htdocs/jne/application/controllers/jual.php",
+		"/C/xampp/htdocs/jne/application/views/jual/add.php",
+		"/C/xampp/htdocs/jne/system/database/DB_driver.php",
+		"/D/jne/jne/database.php",
+		"/C/xampp/htdocs/jne/application/config/database.php",
+		"/C/xampp/htdocs/edgarblog/application/views/index.html",
+		"/C/xampp/htdocs/edgarblog/application/config/index.html",
+		"/C/xampp/htdocs/jne/database.php",
+		"/C/xampp/htdocs/Edgar Blog/user_guide/index.html",
+		"/C/xampp/htdocs/edgarblog/composer.json",
+		"/C/xampp/htdocs/CodeIgniter/application/controllers/hello.php",
+		"/C/xampp/htdocs/CodeIgniter/index.php",
+		"/C/xampp/htdocs/CodeIgniter/application/views/helloview.php",
+		"/C/Users/Edgar/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Edgar/AppData/Roaming/Sublime Text 3/Packages/User/console",
+		"/C/Users/Edgar/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Edgar/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"cabang",
+			"void",
+			"data",
+			";\n",
+			"nama",
+			"customer"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/xampp/htdocs/jnenergi/application/controllers/moduls/Cabang.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								721,
+								721
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/xampp/htdocs/jnenergi/application/controllers/moduls/Akun.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4016,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3135,
+								3135
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1188.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/xampp/htdocs/jnenergi/application/views/moduls/person.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9391,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								887,
+								887
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/xampp/htdocs/jnenergi/application/views/moduls/m_cabang.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9025,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1350.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Edgar/Downloads/Akun.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4016,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								4016
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/xampp/htdocs/jne/application/controllers/akun.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8456,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								59,
+								59
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 864.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/Edgar/Downloads/List_model.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1051,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								630,
+								630
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10763,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								621,
+								621
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/C/xampp/htdocs/jnenergi/application/controllers/moduls/Person.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4341,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								4341
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/C/xampp/htdocs/jne/application/controllers/cabang.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9765,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1187,
+								1187
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2646.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "view.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
